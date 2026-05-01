@@ -32,6 +32,7 @@
       --accent-ink: #24140a;
       --accent-soft: rgba(244, 169, 85, 0.16);
       --flathub-logo: #ffffff;
+      --gnome-logo: #ffffff;
       --hero-panel:
         linear-gradient(145deg, rgba(255, 232, 164, 0.98) 0%, rgba(244, 169, 85, 0.96) 48%, rgba(177, 84, 24, 0.94) 100%);
       --hero-border: transparent;
@@ -65,13 +66,14 @@
       --accent-ink: #fffaf3;
       --accent-soft: rgba(214, 125, 46, 0.14);
       --flathub-logo: #4a90d9;
+      --gnome-logo: #000000;
       --hero-panel:
         linear-gradient(145deg, rgba(255, 234, 176, 0.98) 0%, rgba(232, 145, 59, 0.94) 48%, rgba(184, 90, 27, 0.9) 100%);
       --hero-border: transparent;
       --hero-ink: #24140a;
-      --hero-button-bg: #fffaf3;
-      --hero-button-border: rgba(140, 66, 20, 0.42);
-      --hero-button-ink: #8c4214;
+      --hero-button-bg: var(--accent);
+      --hero-button-border: transparent;
+      --hero-button-ink: var(--accent-ink);
       --wallpaper-bg: #f5eadc;
       --green: #2b6b57;
       --blue: #2b6f8c;
@@ -434,6 +436,7 @@
     }
 
     .gnome-logo {
+      color: var(--gnome-logo);
       -webkit-mask-image: url("assets/gnome.svg");
       mask-image: url("assets/gnome.svg");
     }
