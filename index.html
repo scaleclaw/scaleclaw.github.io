@@ -966,7 +966,7 @@
                 </div>
               </div>
               <p class="lead">
-                An opinionated atomic GNOME desktop image. Minimal by default. Dragons included. 🐉 
+                An opinionated atomic desktop image based on the Universal Blue Base image. Dragons included. 🐉 
               </p>
               <div class="hero-actions">
                 <a class="button primary" href="https://sourceforge.net/projects/scaleclaw/files/latest/download">
@@ -1239,6 +1239,7 @@ sudo just clean</code></pre>
           return `<a href="${url}">${text}</a>`;
         })
         .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+        .replace(/(^|\s)\*([^*]+)\*(?=\s|[.,;:!?)]|$)/g, "$1<em>$2</em>")
         .replace(/`([^`]+)`/g, "<code>$1</code>");
     }
 
@@ -1253,7 +1254,7 @@ sudo just clean</code></pre>
           return;
         }
 
-        html += `<p>${paragraph.map(renderInlineMarkdown).join("<br>")}</p>`;
+        html += `<p>${renderInlineMarkdown(paragraph.join(" "))}</p>`;
         paragraph = [];
       }
 
