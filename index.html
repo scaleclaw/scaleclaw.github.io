@@ -28,6 +28,7 @@
       --muted: #c8b7aa;
       --line: rgba(255, 244, 233, 0.13);
       --accent: #f4a955;
+      --accent-gradient: linear-gradient(135deg, #f4a955 0%, #8c4214 100%);
       --accent-deep: #f7ba70;
       --accent-ink: #24140a;
       --accent-soft: rgba(244, 169, 85, 0.16);
@@ -62,6 +63,7 @@
       --muted: #5c524b;
       --line: rgba(25, 21, 18, 0.12);
       --accent: #d67d2e;
+      --accent-gradient: linear-gradient(135deg, #f6b35c 0%, #c96b2c 52%, #8c4214 100%);
       --accent-deep: #8c4214;
       --accent-ink: #fffaf3;
       --accent-soft: rgba(214, 125, 46, 0.14);
@@ -71,7 +73,7 @@
         linear-gradient(145deg, rgba(255, 234, 176, 0.98) 0%, rgba(232, 145, 59, 0.94) 48%, rgba(184, 90, 27, 0.9) 100%);
       --hero-border: transparent;
       --hero-ink: #24140a;
-      --hero-button-bg: var(--accent);
+      --hero-button-bg: var(--accent-gradient);
       --hero-button-border: transparent;
       --hero-button-ink: var(--accent-ink);
       --wallpaper-bg: #f5eadc;
@@ -354,7 +356,7 @@
 
     .button.primary {
       color: var(--accent-ink);
-      background: var(--accent);
+      background: var(--accent-gradient);
       box-shadow: 0 18px 32px rgba(140, 66, 20, 0.24);
     }
 
