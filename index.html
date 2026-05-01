@@ -318,7 +318,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.9rem;
-      margin-top: 1.6rem;
+      margin-top: 0.85rem;
     }
 
     .button,
@@ -491,8 +491,17 @@
     }
 
     .release-body p,
-    .release-body ul {
+    .release-body ul,
+    .release-body h4 {
       margin: 0.45rem 0 0;
+    }
+
+    .release-body h4 {
+      color: var(--ink);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
     .release-body ul {
@@ -941,7 +950,7 @@
                 </div>
               </div>
               <p class="lead">
-                An opinionated atomic GNOME desktop image. Minimal by default. Dragons included.
+                An opinionated atomic GNOME desktop image. Minimal by default. Dragons included. 🐉
               </p>
               <div class="hero-actions">
                 <a class="button primary" href="https://sourceforge.net/projects/scaleclaw/files/latest/download">
@@ -1257,6 +1266,14 @@ sudo just clean</code></pre>
           continue;
         }
 
+        const headingMatch = line.match(/^#{1,6}\s+(.+)$/);
+        if (headingMatch) {
+          flushParagraph();
+          flushList();
+          html += `<h4>${renderInlineMarkdown(headingMatch[1])}</h4>`;
+          continue;
+        }
+
         const listMatch = line.match(/^[-*+]\s+(.+)$/);
         if (listMatch) {
           flushParagraph();
@@ -1265,7 +1282,7 @@ sudo just clean</code></pre>
         }
 
         flushList();
-        paragraph.push(line.replace(/^#{1,6}\s*/, ""));
+        paragraph.push(line);
       }
 
       flushParagraph();
