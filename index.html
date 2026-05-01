@@ -491,17 +491,33 @@
     }
 
     .release-body p,
-    .release-body ul,
-    .release-body h4 {
+    .release-body ul {
       margin: 0.45rem 0 0;
     }
 
     .release-body h4 {
+      margin: 0.95rem 0 0.35rem;
       color: var(--ink);
       font-family: "Space Grotesk", sans-serif;
-      font-size: 1rem;
+      font-size: 1.08rem;
       font-weight: 700;
       letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+
+    .release-body h4:first-child {
+      margin-top: 0.45rem;
+    }
+
+    .release-body h4 + p {
+      margin-top: 0.35rem;
+    }
+
+    .release-body hr {
+      height: 1px;
+      margin: 0.9rem 0 0.75rem;
+      border: 0;
+      background: var(--line);
     }
 
     .release-body ul {
@@ -950,7 +966,7 @@
                 </div>
               </div>
               <p class="lead">
-                An opinionated atomic GNOME desktop image. Minimal by default. Dragons included. 🐉
+                An opinionated atomic GNOME desktop image. Minimal by default. Dragons included. 🐉 
               </p>
               <div class="hero-actions">
                 <a class="button primary" href="https://sourceforge.net/projects/scaleclaw/files/latest/download">
@@ -1250,6 +1266,14 @@ sudo just clean</code></pre>
         listItems = [];
       }
 
+      function stripEmphasis(value) {
+        return value
+          .replace(/^\*\*\s*/, "")
+          .replace(/\s*\*\*$/, "")
+          .replace(/^__\s*/, "")
+          .replace(/\s*__$/, "");
+      }
+
       for (const rawLine of lines) {
         const line = rawLine.trim();
 
@@ -1270,7 +1294,15 @@ sudo just clean</code></pre>
         if (headingMatch) {
           flushParagraph();
           flushList();
-          html += `<h4>${renderInlineMarkdown(headingMatch[1])}</h4>`;
+          html += `<h4>${renderInlineMarkdown(stripEmphasis(headingMatch[1]))}</h4>`;
+          continue;
+        }
+
+        const boldHeadingMatch = line.match(/^\*\*(.+?)\*\*:?$/);
+        if (boldHeadingMatch) {
+          flushParagraph();
+          flushList();
+          html += `<h4>${renderInlineMarkdown(stripEmphasis(boldHeadingMatch[1]))}</h4>`;
           continue;
         }
 
