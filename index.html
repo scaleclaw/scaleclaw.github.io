@@ -31,6 +31,7 @@
       --accent-deep: #f7ba70;
       --accent-ink: #24140a;
       --accent-soft: rgba(244, 169, 85, 0.16);
+      --flathub-logo: #ffffff;
       --hero-panel:
         linear-gradient(160deg, rgba(244, 169, 85, 0.2), transparent 38%),
         linear-gradient(180deg, rgba(35, 28, 23, 0.72), rgba(35, 28, 23, 0.92));
@@ -60,6 +61,7 @@
       --accent-deep: #8c4214;
       --accent-ink: #fffaf3;
       --accent-soft: rgba(214, 125, 46, 0.14);
+      --flathub-logo: #4a90d9;
       --hero-panel:
         linear-gradient(160deg, rgba(214, 125, 46, 0.12), transparent 38%),
         rgba(255, 251, 245, 0.86);
@@ -395,6 +397,34 @@
       flex: none;
     }
 
+    .theme-logo {
+      display: inline-block;
+      width: 1.8rem;
+      height: 1.8rem;
+      flex: none;
+      background: currentColor;
+      -webkit-mask-position: center;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+    }
+
+    .gnome-logo {
+      -webkit-mask-image: url("assets/gnome.svg");
+      mask-image: url("assets/gnome.svg");
+    }
+
+    .flathub-logo {
+      color: var(--flathub-logo);
+    }
+
+    .stat-emoji {
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
     .stat p,
     .section-head p,
     .feed-list p,
@@ -461,7 +491,7 @@
       text-decoration: none;
     }
 
-    .feed-item strong,
+    .feed-item > a > strong,
     .feed-link strong {
       display: block;
       margin-top: 0.2rem;
@@ -986,9 +1016,7 @@
             <article class="stat">
               <span class="stat-kicker">Desktop</span>
               <div class="stat-icons">
-                <svg class="stat-logo" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-                  <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2h11A2.5 2.5 0 0 1 20 4.5v9A2.5 2.5 0 0 1 17.5 16h-11A2.5 2.5 0 0 1 4 13.5Zm3 14.25A.75.75 0 0 1 7.75 18h8.5a.75.75 0 0 1 0 1.5h-8.5A.75.75 0 0 1 7 18.75Z"/>
-                </svg>
+                <span class="theme-logo gnome-logo" role="img" aria-label="GNOME logo"></span>
               </div>
               <strong>GNOME, tuned up</strong>
               <p>Dark theme, Dash to Dock, app indicators, desktop icons, Logo Menu, Blur My Shell, and a lean app set.</p>
@@ -996,9 +1024,7 @@
             <article class="stat">
               <span class="stat-kicker">System</span>
               <div class="stat-icons">
-                <svg class="stat-logo" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-                  <path d="M12 2 4.5 5.75v5.6c0 4.75 3.2 8.95 7.5 10.15 4.3-1.2 7.5-5.4 7.5-10.15v-5.6Zm0 4.35 3.35 1.68v3.18c0 2.43-1.32 4.66-3.35 5.82-2.03-1.16-3.35-3.39-3.35-5.82V8.03Z"/>
-                </svg>
+                <img class="stat-logo" src="assets/ublue-mini.svg" alt="Universal Blue logo">
               </div>
               <strong>Atomic updates</strong>
               <p>Built around bootc with background update support and a simple Update Scaleclaw launcher for manual runs.</p>
@@ -1006,9 +1032,7 @@
             <article class="stat">
               <span class="stat-kicker">Installer</span>
               <div class="stat-icons">
-                <svg class="stat-logo" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-                  <path d="M5 4.5A2.5 2.5 0 0 1 7.5 2h9A2.5 2.5 0 0 1 19 4.5v15A2.5 2.5 0 0 1 16.5 22h-9A2.5 2.5 0 0 1 5 19.5Zm3 1.25a.75.75 0 0 0 0 1.5h8a.75.75 0 0 0 0-1.5Zm0 4a.75.75 0 0 0 0 1.5h8a.75.75 0 0 0 0-1.5Zm0 4a.75.75 0 0 0 0 1.5h4a.75.75 0 0 0 0-1.5Z"/>
-                </svg>
+                <span class="stat-emoji" aria-hidden="true">💿</span>
               </div>
               <strong>Branded ISO</strong>
               <p>Install with a dark Anaconda experience, Scaleclaw branding, Btrfs rootfs, and a GNOME-first default setup.</p>
@@ -1016,8 +1040,15 @@
             <article class="stat">
               <span class="stat-kicker">Apps</span>
               <div class="stat-icons">
-                <svg class="stat-logo" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-                  <path d="M5.5 3h13A2.5 2.5 0 0 1 21 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5v-13A2.5 2.5 0 0 1 5.5 3Zm1 4.5A1.5 1.5 0 1 0 8 9a1.5 1.5 0 0 0-1.5-1.5Zm5.5 0A1.5 1.5 0 1 0 13.5 9 1.5 1.5 0 0 0 12 7.5Zm5.5 0A1.5 1.5 0 1 0 19 9a1.5 1.5 0 0 0-1.5-1.5Zm-11 5.5A1.5 1.5 0 1 0 8 14.5 1.5 1.5 0 0 0 6.5 13Zm5.5 0a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 12 13Zm5.5 0a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 17.5 13Z"/>
+                <svg class="stat-logo flathub-logo" viewBox="0.04 -1.13 62.99 60.24" role="img" aria-label="Flathub logo">
+                  <g transform="matrix(0.89089,0,0,0.89089,-2448.3,-532.77)" fill="currentColor">
+                    <g transform="matrix(1.7622,0,0,1.7622,2470.4,445.42)">
+                      <circle cx="166.69" cy="95.647003" r="9.0478001"/>
+                      <rect x="158.75" y="108.33" width="15.875" height="15.875" rx="4.2333002" ry="4.2333002"/>
+                      <path transform="matrix(0.91132,0.52615,0.52615,-0.91132,101.23,110.53)" d="m 69.514,58.833 h -1.7806 -10.247 a 2.4441,2.4441 60 0 1 -2.1167,-3.6662 l 6.0139,-10.416 a 2.4441,2.4441 2.522e-7 0 1 4.2333,0 l 6.0139,10.416 a 2.4441,2.4441 120 0 1 -2.1167,3.6662 z"/>
+                      <path transform="rotate(90)" d="m 116.31,-194.99 c 0.87946,0 1.5875,0.70801 1.5875,1.5875 v 12.7 c 0,0.87946 -0.70802,1.5875 -1.5875,1.5875 -0.87948,0 -1.5875,-0.70802 -1.5875,-1.5875 v -12.7 c 0,-0.87946 0.70801,-1.5875 1.5875,-1.5875 z m -7.9375,7.9375 c 0,-0.87946 0.70802,-1.5875 1.5875,-1.5875 h 12.7 c 0.87946,0 1.5875,0.70802 1.5875,1.5875 0,0.87947 -0.70802,1.5875 -1.5875,1.5875 h -12.7 c -0.87947,0 -1.5875,-0.70802 -1.5875,-1.5875 z"/>
+                    </g>
+                  </g>
                 </svg>
               </div>
               <strong>Flatpak ready</strong>
