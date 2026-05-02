@@ -603,6 +603,11 @@
       flex: 1 1 auto;
     }
 
+    .feed-releases .feed-list {
+      min-height: 0;
+      overflow: hidden;
+    }
+
     .feed-releases .section-action,
     .feed-issues .section-action {
       align-self: flex-start;
@@ -751,6 +756,11 @@
       flex: 1;
     }
 
+    .feed-issues .feed-list {
+      min-height: 0;
+      overflow: hidden;
+    }
+
     .site-footer {
       display: flex;
       align-items: center;
@@ -850,6 +860,19 @@
         grid-template-areas:
           "support"
           "issues";
+      }
+    }
+
+    @media (min-width: 981px) {
+      .issues-panel {
+        position: relative;
+        min-height: 0;
+      }
+
+      .issues-panel .feed-issues {
+        position: absolute;
+        inset: 0;
+        width: 100%;
       }
     }
 
@@ -1402,7 +1425,7 @@ sudo just clean</code></pre>
 
     async function loadReleases() {
       try {
-        const releases = await fetchJson(`${apiBase}/releases?per_page=3`);
+        const releases = await fetchJson(`${apiBase}/releases?per_page=1`);
         if (!releases.length) {
           setFeedHtml("release-feed", `<p class="feed-empty">No releases published yet.</p>`);
           return;
